@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Preview</title>
+    <style>
+        /* CSS styles for the live preview project */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222950;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+           
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 25%;
+        }
+
+        .form-section input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .live-preview-section {
+            margin-left: 5px;
+            width: 70%;
+        }
+
+        .live-preview {
+            display: flex;
+            flex-direction: row;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .live-preview h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        #previewImage img{
+            width: 30%;
+            height: auto;
+        }
+        #previewStory{
+            color: gray;
+            margin-left: 10px;
+        }
+        #previewTitle{
+            text-transform: uppercase;
+        }
+        #previewAuthor{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #222950;
+            color: aliceblue;
+            border-radius: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px 20px;
+        }
+        button{
+            width: 100%;
+            background-color: #222950;
+            color: white;
+            cursor: pointer;
+            padding: 10px ;
+        }
+        #story{
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h2>Form Section</h2>
+            <input type="text" id="title" placeholder="Title of the story will be here" oninput="updatePreview()">
+            <input type="url" id="imageURL" placeholder="Image URL" oninput="updatePreview()">
+            
+            <textarea name="story" id="story" cols="40" rows="10" oninput="updatePreview()"></textarea>
+            <input type="text" id="Author" placeholder="Entetr Author Name" oninput="updatePreview()">
+            <button>Submit My story</button>
+        </div>
+
+        <div class="live-preview-section">
+            <h2>Live Preview</h2>
+            <div class="live-preview">
+                
+                <div>
+                    <img id="previewImage" src="" >
+                </div>
+                <div>
+                    <p><strong><span id="previewTitle"></span></strong></p>
+                    <p> <span id="previewStory"></span></p>
+                    <p><span id="previewAuthor"></span></p>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updatePreview() {
+            const title = document.getElementById("title").value;
+            const imageURL = document.getElementById("imageURL").value;
+            const Author = document.getElementById("Author").value;
+            const story = document.getElementById("story").value;
+
+            document.getElementById("previewImage").src = imageURL;
+            document.getElementById("previewTitle").textContent = title;         
+            document.getElementById("previewStory").textContent = story;
+            document.getElementById("previewAuthor").textContent = Author;
+        }
+    </script>
+</body>
+
+</html>
